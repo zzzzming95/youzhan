@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+    	<!-- mysql数据库方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- oracle数据库方言 -->
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property> -->
+
+		<!-- 显示sql语句 -->
+		<property name="hibernate.show_sql">false</property>
+
+		<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+
+		<!-- 加载hibernate自动更新数据库结构 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- hibernate二级缓存配置
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property> -->
+
+		<!-- hibernate映射类 -->
+		<mapping class="pers.szm.system.entities.HotelEntity"/>
+		<mapping class="pers.szm.system.entities.UserEntity"/>
+	</session-factory>
+</hibernate-configuration>
