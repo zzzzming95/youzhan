@@ -1,7 +1,8 @@
 package pers.szm.network.hotel.impl;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,19 +15,26 @@ import org.apache.http.util.EntityUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import pers.szm.network.hotel.GetData;
+import pers.szm.system.dao.impl.XcCityDaoImpl;
+import pers.szm.system.entities.XcCityEntity;
  
  
 public class XieCheng implements GetData{
-	
+	@Resource
+	XcCityDaoImpl xcCityDao;
 	
 	@Override
 	public HashMap<String,String> getInfo(String city,String hotelName,String url){
 		HashMap<String,String> hm = new HashMap<String,String>();
 		DefaultHttpClient client = new DefaultHttpClient();
+		
+		List<XcCityEntity> xcCityList = xcCityDao.findByCityName(city);
+		XcCityEntity xcCityEntity = xcCityList.get(0);
+		
         HttpPost post = new HttpPost("http://m.ctrip.com/restapi/soa2/10932/hotel/Product/domestichotelget?_fxpcqlniredt=09031137211999077688");
         JSONObject response = null;
         try {
-        	String para = "{\"biz\":1,\"contrl\":3,\"facility\":0,\"faclist\":[],\"key\":\"\",\"keytp\":0,\"pay\":0,\"querys\":[{\"type\":8,\"qtype\":1,\"val\":\""+hotelName+"\"}],\"couponlist\":[],\"setInfo\":{\"cityId\":32,\"dstId\":0,\"inDay\":\"2017-06-18\",\"outDay\":\"2017-06-19\"},\"sort\":{\"dir\":1,\"idx\":1,\"ordby\":0,\"size\":10},\"qbitmap\":0,\"alliance\":{\"ishybrid\":0},\"head\":{\"cid\":\"09031137211999077688\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":null,\"extension\":[{\"name\":\"pageid\",\"ue\":\"212093\"},{\"name\":\"webp\",\"ue\":1},{\"name\":\"referrer\",\"ue\":\"http://www.ctrip.com/\"},{\"name\":\"protocal\",\"ue\":\"http\"}]},\"contentType\":\"json\"}";
+        	String para = "{\"biz\":1,\"contrl\":3,\"facility\":0,\"faclist\":[],\"key\":\"\",\"keytp\":0,\"pay\":0,\"querys\":[{\"type\":8,\"qtype\":1,\"val\":\""+hotelName+"\"}],\"couponlist\":[],\"setInfo\":{\"cityId\":"+xcCityEntity.getCityId()+",\"dstId\":0,\"inDay\":\"2017-06-18\",\"outDay\":\"2017-06-19\"},\"sort\":{\"dir\":1,\"idx\":1,\"ordby\":0,\"size\":10},\"qbitmap\":0,\"alliance\":{\"ishybrid\":0},\"head\":{\"cid\":\"09031137211999077688\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":null,\"extension\":[{\"name\":\"pageid\",\"ue\":\"212093\"},{\"name\":\"webp\",\"ue\":1},{\"name\":\"referrer\",\"ue\":\"http://www.ctrip.com/\"},{\"name\":\"protocal\",\"ue\":\"http\"}]},\"contentType\":\"json\"}";
 
             StringEntity s = new StringEntity(para);
             s.setContentEncoding("UTF-8");

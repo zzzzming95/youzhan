@@ -17,5 +17,8 @@ public interface BaseDao<T> {
 		List<T> findAll(Class<T> entityClazz);
 		// 获取实体总数
 		long findCount(Class<T> entityClazz);
+		// 执行sql语句
+		void excuteSql(String sql);
+		
 
 }

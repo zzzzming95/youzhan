@@ -17,6 +17,8 @@
     <context:component-scan base-package="pers.szm.system.dao.impl"/>
     <context:component-scan base-package="pers.szm.system.service.impl"/>
     <context:component-scan base-package="pers.szm.common.base.impl"/>
+    <context:component-scan base-package="pers.szm.common.network.hotel.impl"/>
+    <context:component-scan base-package="pers.szm.common.network.helper"/>
     
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 

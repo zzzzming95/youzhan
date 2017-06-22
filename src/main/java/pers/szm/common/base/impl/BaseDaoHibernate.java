@@ -82,6 +82,11 @@ public class BaseDaoHibernate<T> implements BaseDao<T>{
         }
         return (List<T>) query.list();
     }
+    
+    //执行sql
+    public void excuteSql(String sql){
+    	this.getSessionFactory().getCurrentSession().createSQLQuery(sql);
+    }
 	
 	/**
      * 使用hql 语句进行分页查询操作
