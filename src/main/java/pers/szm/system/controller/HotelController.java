@@ -28,11 +28,12 @@ public class HotelController {
 	@Resource
 	private HotelServiceImpl hotelService;
 	
+	@Resource
+	private XieCheng xieCheng;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam("search") String search,Model model) {
 		
-		System.out.println("test");
 		List<HotelEntity> searchList = new ArrayList<HotelEntity>();
 		searchList = hotelService.searchHotel(search);
 		model.addAttribute("searchList",searchList); 
@@ -43,19 +44,17 @@ public class HotelController {
 	@RequestMapping(value = "/getdetail", method = RequestMethod.POST)
 	public void getDetail(@RequestParam("hotelName")String hotelName,@RequestParam("city")String city,ServletResponse response) throws IOException{
 		Qunaer qne = new Qunaer();
-		XieCheng xc = new XieCheng();
 		if(city == "深圳"){
 			System.out.println(city);
 		}
 		List<HashMap<String,String>> hotelDetail = new ArrayList<HashMap<String,String>>();
 		
-		HashMap<String,String> qneDeatil = qne.getInfo(city, hotelName, "");
-		HashMap<String,String> xcDeatil = xc.getInfo(city, hotelName, "");
-		hotelDetail.add(qneDeatil);
+		//HashMap<String,String> qneDeatil = qne.getInfo(city, hotelName, "");
+		HashMap<String,String> xcDeatil = xieCheng.getInfo(city, hotelName, "");
+		//hotelDetail.add(qneDeatil);
 		hotelDetail.add(xcDeatil);
 		
 		JSONArray detail = JSONArray.fromObject(hotelDetail);
-		System.out.println(detail.toString());
 		PrintWriter out = response.getWriter();
 		out.print(detail);
 	

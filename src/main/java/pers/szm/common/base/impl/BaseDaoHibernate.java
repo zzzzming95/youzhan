@@ -8,12 +8,15 @@ import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 
-import pers.szm.common.base.BaseDao;;
+import pers.szm.common.base.BaseDao;
+import pers.szm.system.dao.impl.XcCityDaoImpl;;
 
 public class BaseDaoHibernate<T> implements BaseDao<T>{
 	
 	@Resource
 	SessionFactory sessionFactory;
+	
+
 	
 	protected SessionFactory getSessionFactory(){
         return sessionFactory;

@@ -1,10 +1,12 @@
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\common\base\impl\BaseDaoHibernate.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\network\hotel\GetData.java
-H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\entities\Student.java
+H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\dao\impl\XcCityDaoImpl.java
+H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\network\helper\NetHelper.java
+H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\entities\XcCityEntity.java
+H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\dao\XcCityDao.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\entities\UserEntity.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\controller\HotelController.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\service\HotelService.java
-H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\entities\User.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\network\hotel\impl\Qunaer.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\controller\UserController.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\dao\HotelDao.java
@@ -14,4 +16,3 @@ H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\common\base\BaseDao.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\service\impl\HotelServiceImpl.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\network\hotel\impl\XieCheng.java
 H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\controller\IndexController.java
-H:\eclipse_ee_work\youzhan\src\main\java\pers\szm\system\dao\UserRepository.java

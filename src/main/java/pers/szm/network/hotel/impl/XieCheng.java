@@ -11,25 +11,34 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.springframework.stereotype.Service;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import pers.szm.network.hotel.GetData;
-import pers.szm.system.dao.impl.XcCityDaoImpl;
+import pers.szm.system.dao.XcCityDao;
 import pers.szm.system.entities.XcCityEntity;
  
- 
+
+@Service("xieCheng")
 public class XieCheng implements GetData{
+	
 	@Resource
-	XcCityDaoImpl xcCityDao;
+	public XcCityDao xcCityDao; 
+	
+
 	
 	@Override
 	public HashMap<String,String> getInfo(String city,String hotelName,String url){
 		HashMap<String,String> hm = new HashMap<String,String>();
 		DefaultHttpClient client = new DefaultHttpClient();
 		
-		List<XcCityEntity> xcCityList = xcCityDao.findByCityName(city);
+		List<XcCityEntity> xcCityList = this.xcCityDao.findByCityName(city);
 		XcCityEntity xcCityEntity = xcCityList.get(0);
+		
+		//System.out.println(xcCityEntity.getCityName().toString());
+		
+		
 		
         HttpPost post = new HttpPost("http://m.ctrip.com/restapi/soa2/10932/hotel/Product/domestichotelget?_fxpcqlniredt=09031137211999077688");
         JSONObject response = null;

@@ -1,7 +1,8 @@
 package pers.szm.system.entities;
 import javax.persistence.*;
 
-
+@Entity
+@Table(name = "user")
 public class UserEntity {
 	private int id;
 	private String username;

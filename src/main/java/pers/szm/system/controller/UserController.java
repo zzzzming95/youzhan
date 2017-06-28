@@ -16,16 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
+@RequestMapping("/user")  
 public class UserController {
 	
-	@RequestMapping(value = "/userinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
 
-        return "index";
+        return "/user/index";
     }
 	
 	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
     public String user() {
         System.out.println("test");
         

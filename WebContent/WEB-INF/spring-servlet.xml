@@ -9,18 +9,19 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">  
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       ">  
 
 
     <!-- 扫描包中的注解 -->
+    
+    <context:component-scan base-package="pers.szm.network.hotel.impl"/>
+    <context:component-scan base-package="pers.szm.network.helper"/>
     <context:component-scan base-package="pers.szm.system.controller"/>
-    <context:component-scan base-package="pers.szm.system.dao.impl"/>
+    <context:component-scan base-package="pers.szm.system.dao.impl"/> 
     <context:component-scan base-package="pers.szm.system.service.impl"/>
     <context:component-scan base-package="pers.szm.common.base.impl"/>
-    <context:component-scan base-package="pers.szm.common.network.hotel.impl"/>
-    <context:component-scan base-package="pers.szm.common.network.helper"/>
     
-    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
 
 	<!-- 开启注解 -->
@@ -28,7 +29,6 @@
     <!-- 静态资源(js、image等)的访问-->
     <mvc:default-servlet-handler/> 
 	
-    
 
     <!--ViewResolver 视图解析器-->  
     <!--用于支持Servlet、JSP视图解析-->
@@ -91,8 +91,8 @@
 	</bean> 
 
 	<!-- 2. 配置事务属性-->
-	<tx:annotation-driven transaction-manager="transactionManager" /> 
-    
+	<tx:annotation-driven transaction-manager="transactionManager"  /> 
+    <!--  使用cglib代理,加上 proxy-target-class="true" -->
     <!-- 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -100,7 +100,7 @@
     </bean> -->
 
 
-	
+
   
 
    

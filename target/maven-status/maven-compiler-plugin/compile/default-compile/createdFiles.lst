@@ -1,11 +1,12 @@
-pers\szm\system\entities\User.class
-pers\szm\system\dao\UserRepository.class
 pers\szm\network\hotel\GetData.class
 pers\szm\system\entities\UserEntity.class
+pers\szm\system\dao\impl\XcCityDaoImpl.class
 pers\szm\system\entities\HotelEntity.class
-pers\szm\system\entities\Student.class
+pers\szm\system\entities\XcCityEntity.class
 pers\szm\system\dao\impl\HotelDaoImpl.class
+pers\szm\network\helper\NetHelper.class
 pers\szm\system\controller\UserController.class
+pers\szm\system\dao\XcCityDao.class
 pers\szm\system\controller\IndexController.class
 pers\szm\system\service\HotelService.class
 pers\szm\common\base\BaseDao.class

@@ -27,5 +27,6 @@
 		<!-- hibernate映射类 -->
 		<mapping class="pers.szm.system.entities.HotelEntity"/>
 		<mapping class="pers.szm.system.entities.UserEntity"/>
+		<mapping class="pers.szm.system.entities.XcCityEntity"/>
 	</session-factory>
 </hibernate-configuration>

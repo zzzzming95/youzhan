@@ -8,9 +8,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
 import pers.szm.network.hotel.GetData;
-
 public class Qunaer implements GetData {
 
 	@Override
@@ -23,7 +23,7 @@ public class Qunaer implements GetData {
 			//System.out.println("https://touch.qunar.com/hotel/hotellist?city="+city+"&checkInDate=2017-06-08&checkOutDate=2017-06-09&keywords="+hotelName+"&sort=0");
 			
 			//System.out.println(doc.baseUri());
-			System.out.println(doc.toString());
+			//System.out.println(doc.toString());
 			Elements marks = doc.select("p:contains("+hotelName+")");
 			Element mark = marks.first();
 			Element markPar = mark.parent().parent();  
