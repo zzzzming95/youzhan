@@ -6,18 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pers.szm.system.dao.XcCityDao;
+import pers.szm.common.helper.NetworkHelper;
 
 @Controller
 public class IndexController {
 	
-	@Resource
-	public XcCityDao xcCityDao; 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
 		
-		System.out.println(xcCityDao.findByCityName("深圳").toString());
 		
 		System.out.println("indextest");
         return "index";

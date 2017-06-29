@@ -17,7 +17,6 @@ public class XcCityDaoImpl extends BaseDaoHibernate<XcCityEntity> implements XcC
 		String query = "from XcCityEntity where city_name = '"+cityName+"'";
 		//System.out.println(query);
 		List<XcCityEntity> xcCityList = this.find(query); 
-		System.out.println(xcCityList.get(0).getId());
 		return xcCityList; 
 	}
 
