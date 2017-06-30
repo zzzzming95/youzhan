@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import pers.szm.common.helper.DateHelper;
 import pers.szm.network.hotel.GetData;
 import pers.szm.system.dao.XcCityDao;
 import pers.szm.system.entities.XcCityEntity;
@@ -25,7 +26,8 @@ public class XieCheng implements GetData{
 	
 	@Resource
 	private XcCityDao xcCityDao; 
-	
+	@Resource
+	private DateHelper dateHelper;
 
 	
 	@Override
@@ -36,14 +38,12 @@ public class XieCheng implements GetData{
 		List<XcCityEntity> xcCityList = this.xcCityDao.findByCityName(city);
 		XcCityEntity xcCityEntity = xcCityList.get(0);
 		
-		System.out.println(xcCityEntity.getCityId());
 		
 		
-		String three = "30";
         HttpPost post = new HttpPost("http://m.ctrip.com/restapi/soa2/10932/hotel/Product/domestichotelget?_fxpcqlniredt=09031137211999077688");
         JSONObject response = null;
         try {
-        	String para = "{\"biz\":1,\"contrl\":3,\"facility\":0,\"faclist\":[],\"key\":\"\",\"keytp\":0,\"pay\":0,\"querys\":[{\"type\":8,\"qtype\":1,\"val\":\""+hotelName+"\"}],\"couponlist\":[],\"setInfo\":{\"cityId\":30,\"dstId\":0,\"inDay\":\"2017-06-28\",\"outDay\":\"2017-06-29\"},\"sort\":{\"dir\":1,\"idx\":1,\"ordby\":0,\"size\":10},\"qbitmap\":0,\"alliance\":{\"ishybrid\":0},\"head\":{\"cid\":\"09031137211999077688\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":null,\"extension\":[{\"name\":\"pageid\",\"ue\":\"212093\"},{\"name\":\"webp\",\"ue\":1},{\"name\":\"referrer\",\"ue\":\"http://www.ctrip.com/\"},{\"name\":\"protocal\",\"ue\":\"http\"}]},\"contentType\":\"json\"}";
+        	String para = "{\"biz\":1,\"contrl\":3,\"facility\":0,\"faclist\":[],\"key\":\"\",\"keytp\":0,\"pay\":0,\"querys\":[{\"type\":8,\"qtype\":1,\"val\":\""+hotelName+"\"}],\"couponlist\":[],\"setInfo\":{\"cityId\":"+xcCityEntity.getCityId()+",\"dstId\":0,\"inDay\":\""+dateHelper.getDate()+"\",\"outDay\":\""+dateHelper.getSpecialDate(1)+"\"},\"sort\":{\"dir\":1,\"idx\":1,\"ordby\":0,\"size\":10},\"qbitmap\":0,\"alliance\":{\"ishybrid\":0},\"head\":{\"cid\":\"09031137211999077688\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":null,\"extension\":[{\"name\":\"pageid\",\"ue\":\"212093\"},{\"name\":\"webp\",\"ue\":1},{\"name\":\"referrer\",\"ue\":\"http://www.ctrip.com/\"},{\"name\":\"protocal\",\"ue\":\"http\"}]},\"contentType\":\"json\"}";
 
             StringEntity s = new StringEntity(para);
             s.setContentEncoding("UTF-8");
@@ -59,7 +59,7 @@ public class XieCheng implements GetData{
                 
                 //System.out.println("xiecheng test");
                 JSONArray hotelInfos = response.getJSONArray("htlInfos");
-                System.out.println(hotelInfos.toString());
+                //System.out.println(hotelInfos.toString());
                 JSONObject hotelInfo = (JSONObject) hotelInfos.get(0);
                 JSONObject baseInfo =  hotelInfo.getJSONObject("baseInfo");
                 

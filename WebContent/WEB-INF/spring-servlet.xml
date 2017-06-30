@@ -16,7 +16,7 @@
     <!-- 扫描包中的注解 -->
     
     <context:component-scan base-package="pers.szm.network.hotel.impl"/>
-    <context:component-scan base-package="pers.szm.network.helper"/>
+    <context:component-scan base-package="pers.szm.common.helper"/>
     <context:component-scan base-package="pers.szm.system.controller"/>
     <context:component-scan base-package="pers.szm.system.dao.impl"/> 
     <context:component-scan base-package="pers.szm.system.service.impl"/>
