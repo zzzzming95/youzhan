@@ -42,7 +42,7 @@ public class UserController {
         System.out.println("login");
         
 
-        return "user/login";
+        return "user/login";   
     }
 	
 	@RequestMapping(value = "/loginData", method = RequestMethod.POST)
