@@ -30,13 +30,13 @@
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#">Action</a>
+									<a href="<%=path%>/user/login">登陆</a>
 								</li>
 								<li>
-									<a href="#">Another action</a>
+									<a href="<%=path%>/user/register">注册</a>
 								</li>
 								<li>
-									<a href="#">Something else here</a>
+									<a href="<%=path%>/user/index">用户中心</a>
 								</li>
 								<li class="divider">
 								</li>
