@@ -9,6 +9,8 @@
 </head>
 <body>
 <h1>登陆成功，即将跳转到用户中心</h1>
+<p>session:${sessionScope.sessionUser}</p> 
+${sessionScope.sessionUser}
 <a href="<%=path%>/user/index">点击跳转</a>
 </body>
 </html>

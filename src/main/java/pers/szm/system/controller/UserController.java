@@ -4,9 +4,11 @@ package pers.szm.system.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pers.szm.system.entities.UserEntity;
 import pers.szm.system.service.UserService;
@@ -16,7 +18,8 @@ import pers.szm.system.service.UserService;
 
 
 @Controller
-@RequestMapping("/user")  
+@RequestMapping("/user")
+@SessionAttributes(value="sessionUser")
 public class UserController {
 	
 	@Resource 
@@ -46,12 +49,17 @@ public class UserController {
     }
 	
 	@RequestMapping(value = "/loginData", method = RequestMethod.POST)
-    public String loginData(@ModelAttribute UserEntity user) {
-        System.out.println(user.getUsername());
+    public String loginData(@ModelAttribute UserEntity user,Model model) {
         UserEntity userInfo = userService.login(user.getUsername());
+        UserEntity sessionUser = new UserEntity();
         if(userInfo == null){
+        	
         	return "user/error";
         }else if(userInfo.getPassword().equals(user.getPassword())){
+        	sessionUser.setAdmin(userInfo.getAdmin());
+        	sessionUser.setUsername(userInfo.getUsername());
+        	sessionUser.setId(userInfo.getId());
+        	model.addAttribute("sessionUser",sessionUser);
         	return "user/success";
         }
         else return "user/error";
